@@ -1,0 +1,9 @@
+{% extends 'layout.html' %}
+{% block content %}
+<section class="balance-page">
+<h2>Balance</h2>
+<p>Total points: <strong>{{ points }}</strong></p>
+<p>Equivalent INR: <strong>₹{{ '%.2f' | format(inr) }}</strong></p>
+<p>Estimated payout (20%): <strong>₹{{ '%.2f' | format(payout) }}</strong></p>
+</section>
+{% endblock %}

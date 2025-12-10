@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% block content %}
+<section class="plant-page">
+<h2>{{ plant.name }}</h2>
+<p class="muted">{{ plant.scientific }}</p>
+<p>{{ plant.description }}</p>
+<p><strong>Points:</strong> {{ plant.base_points }} &nbsp;|&nbsp; <strong>Difficulty:</strong> {{ plant.difficulty }}</p>
+
+
+<form method="post" enctype="multipart/form-data" class="form-card">
+<label>Upload planting photo<input type="file" name="photo" accept="image/*" required></label>
+<button type="submit" class="btn">Submit photo for verification</button>
+</form>
+</section>
+{% endblock %}

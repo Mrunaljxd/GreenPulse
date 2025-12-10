@@ -1,0 +1,29 @@
+# Python files
+*.pyc
+__pycache__/
+
+# Virtual environment
+.venv/
+venv/
+
+# Flask instance folder
+instance/
+
+# Environment variables
+.env
+
+# SQLite database
+*.sqlite3
+
+# Uploaded images and media
+static/uploads/
+
+# IDE/editor settings
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db

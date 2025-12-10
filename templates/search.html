@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+{% block content %}
+<section class="search-page">
+  <h2>
+    {% if q %}
+      Search results for "{{ q }}"
+    {% else %}
+      Search for plants
+    {% endif %}
+  </h2>
+
+  <div class="cards">
+    {% if results %}
+      {% for r in results %}
+      <article class="card">
+        <h3><a href="/plant/{{ r.id }}">{{ r.name }}</a></h3>
+        <p class="muted">{{ r.scientific }}</p>
+        <p>{{ r.description }}</p>
+      </article>
+      {% endfor %}
+    {% elif q %}
+      <p>No plants found. Try different keywords.</p>
+    {% else %}
+      <p>Type something above to search for plants.</p>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

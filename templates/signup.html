@@ -1,0 +1,92 @@
+{% extends 'layout.html' %}
+{% block content %}
+<section class="auth-card">
+  <h2>Create Account</h2>
+  <form method="post" class="form-card">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input id="username" name="username" placeholder="Enter your username" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input id="email" type="email" name="email" placeholder="Enter your email" required>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input id="password" type="password" name="password" placeholder="Enter your password" required>
+    </div>
+    <button type="submit" class="btn">Sign Up</button>
+  </form>
+  <p class="muted">Already have an account? <a href="/login">Log in</a></p>
+</section>
+
+<style>
+.auth-card {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 30px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.auth-card h2 {
+  margin-bottom: 20px;
+  color: #333;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.form-card .form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-card label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #555;
+}
+
+.form-card input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.form-card .btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #28a745;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.form-card .btn:hover {
+  background: #218838;
+}
+
+.muted {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #777;
+}
+
+.muted a {
+  color: #28a745;
+  text-decoration: none;
+}
+
+.muted a:hover {
+  text-decoration: underline;
+}
+</style>
+{% endblock %}

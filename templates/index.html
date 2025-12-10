@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% block content %}
+<section class="hero" id="home">
+<img src="/static/images/greenpulse-logo.png" alt="GreenPulse Large Logo" class="hero-logo">
+<h1 class="hero-title">Grow Trees. Earn Rewards. Save the Planet.</h1>
+<p class="hero-subtitle">Plant trees, complete care tasks, and earn money while making India greener.</p>
+<a href="/signup" class="hero-btn">Start Planting</a>
+</section>
+
+
+<section class="card-list">
+<h2>Plants you can plant</h2>
+<div class="cards">
+{% for plant in plants %}
+<article class="card">
+<h3>{{ plant.name }}</h3>
+<p class="muted">{{ plant.scientific }}</p>
+<p>{{ plant.description }}</p>
+<p><strong>Points:</strong> {{ plant.base_points }} &nbsp;|&nbsp; <strong>Difficulty:</strong> {{ plant.difficulty }}</p>
+<div class="card-actions">
+<a href="/plant/{{ plant.id }}" class="btn small">Plant</a>
+</div>
+</article>
+{% endfor %}
+</div>
+</section>
+
+
+{% endblock %}

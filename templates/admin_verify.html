@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+{% block content %}
+<section class="admin-panel max-w-5xl mx-auto p-6">
+    <h2 class="text-3xl font-bold mb-6">Pending verifications</h2>
+
+    {% if submissions %}
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {% for u in submissions %}
+            <article class="bg-white p-4 rounded-lg shadow-md">
+                <p class="mb-2"><strong>User:</strong> {{ u.user.username }} | 
+                    <strong>Task:</strong> {{ u.custom_name or u.plant.name }}</p>
+                
+                <div class="mb-4">
+                    <img src="{{ url_for('uploaded_file', filename=u.photo) }}" 
+                         alt="User upload" 
+                         class="w-full h-48 object-cover rounded-lg shadow">
+                </div>
+
+                <div class="flex gap-4">
+                    <form action="{{ url_for('approve', entry_id=u.id) }}" method="post" class="flex-1">
+                        <button type="submit" class="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition">
+                            Approve
+                        </button>
+                    </form>
+                    <form action="{{ url_for('reject', entry_id=u.id) }}" method="post" class="flex-1">
+                        <button type="submit" class="w-full bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 transition">
+                            Reject
+                        </button>
+                    </form>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-gray-600">No uploads awaiting verification.</p>
+    {% endif %}
+</section>
+{% endblock %}

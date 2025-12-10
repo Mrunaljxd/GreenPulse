@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<section class="leaderboard-section" style="padding: 20px;">
+  <h2 style="text-align: center; margin-bottom: 20px;">Leaderboard</h2>
+  <table class="leaderboard-table" style="width: 100%; border-collapse: collapse; text-align: left;">
+    <thead>
+      <tr style="background-color: #4CAF50; color: white;">
+        <th style="padding: 10px;">Rank</th>
+        <th style="padding: 10px;">User</th>
+        <th style="padding: 10px;">Points</th>
+        <th style="padding: 10px;">Plants</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in users %}
+      <tr style="background-color: {% if loop.index is odd %}#f2f2f2{% else %}#ffffff{% endif %}; transition: background-color 0.3s;">
+        <td style="padding: 10px;">{{ loop.index }}</td>
+        <td style="padding: 10px;">{{ user.username }}</td>
+        <td style="padding: 10px;">{{ user.points or 0 }}</td>
+        <td style="padding: 10px;">
+          {% for p in user.plants %}
+            {{ p.plant.name }}{% if not loop.last %}, {% endif %}
+          {% endfor %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+
+<script>
+  // Optional: hover effect for rows
+  const rows = document.querySelectorAll('.leaderboard-table tbody tr');
+  rows.forEach(row => {
+    row.addEventListener('mouseover', () => row.style.backgroundColor = '#d9edf7');
+    row.addEventListener('mouseout', () => {
+      const index = Array.from(row.parentNode.children).indexOf(row);
+      row.style.backgroundColor = index % 2 === 0 ? '#f2f2f2' : '#ffffff';
+    });
+  });
+</script>
+{% endblock %}
